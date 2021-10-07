@@ -54,6 +54,9 @@ export default Featured;
 
 const GameList = styled(motion.div)`
     padding: 0rem 15rem;
+    @media only screen and (max-width: 650px){
+        padding: 0rem 1rem;
+    }
     h2{
         padding: 2rem 0rem 1rem;
         font-family: 'Maven Pro';
@@ -67,4 +70,9 @@ const Games = styled(motion.div)`
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     grid-column-gap: 3rem;
     grid-row-gap: 5rem;
+    @media only screen and (max-width: 650px){
+        justify-self: center;
+        justify-items: center;
+        justify-content: center;
+    }
 `;

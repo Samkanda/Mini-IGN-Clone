@@ -1,8 +1,4 @@
 import React, {useState} from "react";
-//Redux
-// import {useDispatch} from 'react-redux';
-// import {loadGames} from '../actions/gamesAction';
-// import { useLocation } from "react-router";
 //Components
 import Featured from "../pages/Featured";
 import All from "../pages/All";

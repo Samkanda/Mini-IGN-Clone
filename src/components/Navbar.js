@@ -8,8 +8,6 @@ const Navbar = ({setMonth, setCategory, selectedCategory, selectedMonth}) => {
     const [selectedButtonFea, setButtonFea] = useState("b");
     const [selectedButtonPop, setButtonPop] = useState("b");
     const [selectedButtonNew, setButtonNew] = useState("b");
-    //const [selectedYear, setYear] = useState({Jan: true, Feb: false, Mar: false, Apr: false, May: false, Jun: false, Jul:false, Aug:false, Sep:false, Oct:false, Nov:false, Dec:false})
-    // const Jan = selectedYear.Jan;
     
     useEffect(() => {
         setButtonFea("b"); setButtonPop("b"); setButtonNew("b"); setButtonAll("a")
@@ -18,12 +16,6 @@ const Navbar = ({setMonth, setCategory, selectedCategory, selectedMonth}) => {
         else if(selectedCategory==="Popular"){ setButtonPop("a"); setButtonAll("b");  }
         else if(selectedCategory==="New"){ setButtonNew("a"); setButtonAll("b"); } 
     }, [selectedCategory])
-
-    // function monthRecorder(month) {
-    //     if (selectedMonth === month){
-    //     setYear(prevState=> {return {...prevState, prevState: false}});}
-    //     console.log(Jan);
-    // }
     return (
         <NavOuter>
             <NavInner>
@@ -62,12 +54,14 @@ const NavOuter = styled(motion.div)`
     box-shadow: rgb(0 0 0 / 8%) 0px 2px 4px 0px;
     border-bottom: 2px solid rgba(0, 0, 0, 0.08);
     width: 100%;
-    position: sticky;
     top: 0px;
     display: block;
     h1{
         font-family: 'Maven Pro';
         font-size: 2.5rem;
+        @media only screen and (max-width: 650px){
+            font-size: 5vw;
+        }
     }
 `;
 
@@ -128,6 +122,10 @@ padding-bottom: 0.5rem;
         text-align: center;
         margin-top: .5rem;
         margin-right: .5rem;
+        @media only screen and (max-width: 700px){
+            font-size: 1rem;
+            padding: 1px 5px;
+        }
     }
     #a{
         background-color: #bf1313;

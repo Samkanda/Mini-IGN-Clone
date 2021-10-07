@@ -54,6 +54,9 @@ export default Popular;
 
 const GameList = styled(motion.div)`
     padding: 0rem 15rem;
+    @media only screen and (max-width: 650px){
+        padding: 0rem 1rem;
+    }
     h2{
         padding: 2rem 0rem 1rem;
         font-family: 'Maven Pro';

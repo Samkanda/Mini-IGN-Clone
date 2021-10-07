@@ -112,6 +112,9 @@ const Detail = styled(motion.div)`
     width: 80%;
     border-radius: 1rem;
     padding: 2rem 7rem;
+    @media only screen and (max-width: 650px){
+        padding: 2rem 1rem;
+        }
     background: white;
     position: absolute;
     left: 10%;
