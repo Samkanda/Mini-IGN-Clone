@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { gameDetailsURL, gameScreenshotURL } from '../api';
+import { gameDetailsURL, gameScreenshotURL, filteredGameURL} from '../api';
 
 export const loadDetail = (id) => async (dispatch) => {
     dispatch({
@@ -18,6 +18,22 @@ export const loadDetail = (id) => async (dispatch) => {
 
         },
     });
+}
+
+export const loadFilter = (lastYear, currentYear) => async (dispatch) => {
+    dispatch({
+        type: "LOADING_DETAIL",
+    });
+
+    const detailData = await axios.get(filteredGameURL(lastYear,currentYear ))
+
+    dispatch({
+        type: "GET_DETAIL",
+        payload: {
+            game: detailData.data,
+        },
+    });
+    console.log(await axios.get(filteredGameURL(lastYear,currentYear )))
 }
 
 

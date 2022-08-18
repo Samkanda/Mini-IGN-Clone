@@ -20,7 +20,7 @@ const Game = ({name, released, image, id}) => {
     }
     return (
         <StyledGame onClick={loadDetailHandler}>
-            <Link to={`/game/${id}`}>
+            <Link className='linkContainer' to={`/game/${id}`}>
             <LeftSide>
             <img src={smallImage(image, 640)} alt={name}></img>
             </LeftSide>
@@ -38,15 +38,22 @@ const StyledGame = styled(motion.div)`
     box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
     border-radius: 1rem;
     cursor: pointer;
-    max-width: 25rem;
+    max-width: 20rem;
     max-height: 18rem;
-    h3{
-            padding: 1.1rem;
+    h3, p{
+            padding: 0;
+            margin: 0;
         }
     img{
         width: 100%;
         height: 18vh;
         object-fit: cover;
+    }
+    .linkContainer{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: 100%;
     }
 `;
 
@@ -56,5 +63,10 @@ const LeftSide = styled(motion.div)`
 
 const RightSide = styled(motion.div)`
 text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%;
+    justify-content: space-evenly;
 `
 export default Game

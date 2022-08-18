@@ -27,17 +27,22 @@ const currentDay = getCurrentDay();
 const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
 const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
+let genre="action";
 
-
-//Months data
-const JanGames = `games?key=88002727090249d293f5a117d1d3d855&dates=2021-01-01,2021-01-29&ordering=released&page_size=20`;
 
 //Popular Games
 const popular_games = `games?key=88002727090249d293f5a117d1d3d855&dates=${lastYear},${currentDate}&ordering=-rating&page_size=30`;
 const upcoming_games = `games?key=88002727090249d293f5a117d1d3d855&dates=${currentYear},${nextYear}&ordering=-added&page_size=30`;
 const newGames = `games?key=88002727090249d293f5a117d1d3d855&dates=${lastYear},${currentDate}&ordering=-released&page_size=10`;
+const genre_games = `https://api.rawg.io/api/genres`;
 
-export const JanGamesURL = () => `${base_url}${JanGames}`;
+
+export const genreGamesURL = () => `${base_url}${genre_games}`;
+
+export const filteredGameURL = (filterLastYear,filterCurrentYear) => `
+${base_url}games?key=88002727090249d293f5a117d1d3d855&dates=${filterLastYear},${filterCurrentYear}&ordering=-rating&page_size=30`;
+
+
 export const popularGamesURL = () => `${base_url}${popular_games}`;
 export const upcomingGamesURL = () => `${base_url}${upcoming_games}`;
 export const newGamesURL = () => `${base_url}${newGames}`;

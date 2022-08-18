@@ -2,7 +2,6 @@ import React, {useState} from "react";
 //Components
 import Featured from "../pages/Featured";
 import All from "../pages/All";
-import New from '../pages/New';
 import Popular from '../pages/Popular'
 
 const Home = () => {
@@ -12,7 +11,6 @@ const Home = () => {
   
 if(selectedCategory === "Featured") {return (<Featured selectedMonth= {selectedMonth} setMonth = {setMonth} setCategory={setCategory} selectedCategory={selectedCategory}/>)}
 else if(selectedCategory === "Popular"){return (<Popular selectedMonth= {selectedMonth} setMonth = {setMonth} setCategory={setCategory} selectedCategory={selectedCategory}/>)}
-else if(selectedCategory === "New") {return(<New selectedMonth= {selectedMonth} setMonth = {setMonth} setCategory={setCategory} selectedCategory={selectedCategory}/>)}
 else{ return( <All selectedMonth= {selectedMonth} setMonth = {setMonth} setCategory={setCategory} selectedCategory={selectedCategory}/>)}}
     
 export default Home;

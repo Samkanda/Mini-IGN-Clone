@@ -15,13 +15,16 @@ const Searchbar = () => {
             <NavContent>
             <BurgerButton onClick={() => setShowLinks(!showLinks)}><MenuIcon className="burgerButton"/></BurgerButton>
                 <Links id={showLinks ? "hidden" : ""}>
+                <h3>Shows</h3>
                 <h3>Store</h3>
                 <h3>News</h3>
                 <h3>Videos</h3>
                 <h3>Reviews</h3>
+                <h3>Guides</h3>
+                <h3>Playlist</h3>
                 <h3>Boards</h3>
-                <SearchIcon class = "searchIcon"/>
-                <button class = "signButton">Sign in</button>
+                <SearchIcon className = "searchIcon"/>
+                <button className = "signButton">Sign in</button>
                 </Links>
             </NavContent>
         </NavOuter>
@@ -31,58 +34,54 @@ const Searchbar = () => {
 export default Searchbar;
 const NavOuter = styled(motion.div)`
     display:flex;
-    width: 100%;
-    height: 7rem;
+    padding: 0 11.5vw;
+    height: 5rem;
     background-color: white;
     box-shadow: rgb(0 0 0 / 8%) 0px 2px 4px 0px;
     border-bottom: 2px solid rgba(0, 0, 0, 0.08);
-    width: 100%;
-    h3{font-size:1.5rem; display: inline-block;}
-    @media only screen and (max-width: 1150px){height: 6rem}
+    @media only screen and (max-width: 1150px){height: 6rem; padding: 0 3.5vw;}
 `;
 
 export const BurgerButton = styled.button`
   background-color: Transparent;
-  margin-top: .8rem;
   display: none;
   border: none;
   .burgerButton{ width: 70px; height: 40px; } `;
 
 const NavInner = styled(motion.div)`
     display:flex;
+    align-items: center;
     flex:50%;
-    padding-left: 12vw;  
-    @media only screen and (max-width: 1150px){padding-left: 11vw;}
     img{
+        width:8rem;
+        margin-bottom: 4px;
         @media only screen and (max-width: 1150px){
-            width:9rem;
-            height: 5rem;
-            margin-top: .8rem;
+            width:7rem;
         }
     }
 `;
 
 const Links = styled.div`
     display: flex;
-    max-height: 80px;
     text-decoration:none;
     color: #7510F7;
     font-size: 25px;
-    h3{margin-left: 10px; text-decoration: none;}
-    .searchIcon{ width: 2rem;}
-    @media only screen and (max-width: 1150px){
-        h3{
-            padding-left: 0rem;
-            margin-left: 1rem;
-            font-size: 1rem;
-        }
+    align-items: center;
+    h3{
+        font-size: 18px;
+        padding: 8px;
+        margin: 0;
     }
+    @media only screen and (max-width: 950px) {
+        div {display: none;}
+    }
+    .searchIcon{ width: 2rem;}
+
 `;
 
 const NavContent = styled.div`
     display:flex;
-    padding: 1rem;
-    padding-right: 12vw;
+    align-items: center;
     input{margin: 1rem;}   
     .signButton{
         margin-top: 1rem;

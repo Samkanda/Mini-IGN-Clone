@@ -2,19 +2,29 @@ import React, {useState, useEffect} from 'react';
 //Styling and Animation
 import styled from 'styled-components';
 import {motion} from "framer-motion";
+import {useDispatch, useSelector} from 'react-redux';
+import {loadDetail, loadFilter} from '../actions/detailsAction';
+
+// import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
+// import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 
 const Navbar = ({setMonth, setCategory, selectedCategory, selectedMonth}) => {
+    const dispatch = useDispatch();
     const [selectedButtonAll, setButtonAll] = useState("");
     const [selectedButtonFea, setButtonFea] = useState("b");
     const [selectedButtonPop, setButtonPop] = useState("b");
-    const [selectedButtonNew, setButtonNew] = useState("b");
+    const [year, setYear] = useState("");
     
+    const loadFilterHandler = (id, aa) => {
+        dispatch(loadFilter(id, aa))
+    }
+
     useEffect(() => {
-        setButtonFea("b"); setButtonPop("b"); setButtonNew("b"); setButtonAll("a")
+        setButtonFea("b"); setButtonPop("b"); setButtonAll("a")
         if (selectedCategory === "All"){setButtonAll("a")}
         else if(selectedCategory=== "Featured"){ setButtonFea("a"); setButtonAll("b"); }
         else if(selectedCategory==="Popular"){ setButtonPop("a"); setButtonAll("b");  }
-        else if(selectedCategory==="New"){ setButtonNew("a"); setButtonAll("b"); } 
+        setYear(new Date().getFullYear().toString().substring(2));
     }, [selectedCategory])
     return (
         <NavOuter>
@@ -24,22 +34,24 @@ const Navbar = ({setMonth, setCategory, selectedCategory, selectedMonth}) => {
                     <button id={selectedButtonAll} onClick={()=> {setCategory("All"); }}>All</button>
                     <button id={selectedButtonFea} onClick={()=> {setCategory("Featured");}}>Featured</button>
                     <button id={selectedButtonPop} onClick={()=> {setCategory("Popular"); }}>Popular</button>
-                    <button id={selectedButtonNew} onClick={()=> {setCategory("New");}}>New</button>
                 </NavLinks>
+                
                 <NavDate>
+                {/* <div className='stuff'>Months</div> */}
                     <button onClick={() => setMonth("All")}> All</button>
-                    <button onClick={() => setMonth("January") }>JAN '21</button>
-                    <button onClick={() => setMonth("Feburary")}>FEB '21</button>
-                    <button onClick={() => setMonth("March")}>MAR '21</button>
-                    <button onClick={() => setMonth("April")}>APR '21</button>
-                    <button onClick={() => setMonth("May")}>MAY '21</button>
-                    <button onClick={() => setMonth("June")}>JUN '21</button>
-                    <button onClick={() => setMonth("July")}>JUL '21</button>
-                    <button onClick={() => setMonth("August")}>AUG '21</button>
-                    <button onClick={() => setMonth("September")}>SEPT '21</button>
-                    <button id={selectedMonth ? 'b' : 'b'} onClick={() => setMonth("October")}>OCT '21</button>
-                    <button onClick={() => setMonth("November")}>NOV '21</button>
-                    <button onClick={() => setMonth("December")}>DEC '21</button>
+                    <button onClick={() => (setMonth("January"), loadFilterHandler("2010-01-01,2018-12-31", "2010-01-01,2018-12-31"))}>JAN '{year}</button>
+                    <button onClick={() => setMonth("Feburary")}>FEB '{year}</button>
+                    <button onClick={() => setMonth("March")}>MAR '{year}</button>
+                    <button onClick={() => setMonth("April")}>APR '{year}</button>
+                    <button onClick={() => setMonth("May")}>MAY '{year}</button>
+                    <button onClick={() => setMonth("June")}>JUN '{year}</button>
+                    <button onClick={() => setMonth("July")}>JUL '{year}</button>
+                    <button onClick={() => setMonth("August")}>AUG '{year}</button>
+                    <button onClick={() => setMonth("September")}>SEPT '{year}</button>
+                    <button onClick={() => setMonth("October")}>OCT '{year}</button>
+                    <button onClick={() => setMonth("November")}>NOV '{year}</button>
+                    <button onClick={() => setMonth("December")}>DEC '{year}</button>
+                    {/* <div className='stuff'>Months</div> */}
                 </NavDate>
             </NavInner>
         </NavOuter>
@@ -69,6 +81,7 @@ const NavInner = styled(motion.div)`
     padding-left: 12vw;
     padding-right: 10.5vw;
     padding-top: 1rem;
+    @media(max-width: 1150px){padding-left: 5vw;}
 `;
 const NavDate = styled(motion.div)`  
     padding-right: 0rem;
@@ -124,7 +137,6 @@ padding-bottom: 0.5rem;
         margin-right: .5rem;
         @media only screen and (max-width: 700px){
             font-size: 1rem;
-            padding: 1px 5px;
         }
     }
     #a{
