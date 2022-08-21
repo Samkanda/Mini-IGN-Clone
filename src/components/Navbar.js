@@ -14,10 +14,6 @@ const Navbar = ({setMonth, setCategory, selectedCategory, selectedMonth}) => {
     const [selectedButtonFea, setButtonFea] = useState("b");
     const [selectedButtonPop, setButtonPop] = useState("b");
     const [year, setYear] = useState("");
-    
-    const loadFilterHandler = (id, aa) => {
-        dispatch(loadFilter(id, aa))
-    }
 
     useEffect(() => {
         setButtonFea("b"); setButtonPop("b"); setButtonAll("a")
@@ -37,9 +33,7 @@ const Navbar = ({setMonth, setCategory, selectedCategory, selectedMonth}) => {
                 </NavLinks>
                 
                 <NavDate>
-                {/* <div className='stuff'>Months</div> */}
-                    <button onClick={() => setMonth("All")}> All</button>
-                    <button onClick={() => (setMonth("January"), loadFilterHandler("2010-01-01,2018-12-31", "2010-01-01,2018-12-31"))}>JAN '{year}</button>
+                    <button onClick={() => (setMonth("January"))}>JAN '{year}</button>
                     <button onClick={() => setMonth("Feburary")}>FEB '{year}</button>
                     <button onClick={() => setMonth("March")}>MAR '{year}</button>
                     <button onClick={() => setMonth("April")}>APR '{year}</button>
@@ -51,7 +45,6 @@ const Navbar = ({setMonth, setCategory, selectedCategory, selectedMonth}) => {
                     <button onClick={() => setMonth("October")}>OCT '{year}</button>
                     <button onClick={() => setMonth("November")}>NOV '{year}</button>
                     <button onClick={() => setMonth("December")}>DEC '{year}</button>
-                    {/* <div className='stuff'>Months</div> */}
                 </NavDate>
             </NavInner>
         </NavOuter>

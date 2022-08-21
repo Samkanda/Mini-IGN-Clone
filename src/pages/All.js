@@ -13,14 +13,16 @@ import Navbar from "../components/Navbar";
 //Components
 import Game from '../components/Game';
 import GameDetail from "../components/GameDetail";
+import { getCurrentMonth } from "../api";
 
 const All = ({setMonth, setCategory, selectedMonth}) => {
     //Use States
-    const [year, setYear] = useState("");
+    const [year, setYear] = useState(new Date().getFullYear().toString());
     const [genres, setGenres] = useState([])
     const [platforms, setPlatforms] = useState([])
-    const {upcoming, popular, newGames} = useSelector((state) => state.games); 
-    const [selectedValue, setMonthValue] = useState("");
+    const {upcoming, popular} = useSelector((state) => state.games); 
+    const [selectedValue, setMonthValue] = useState(getCurrentMonth());
+    
 
     //get the current location
     const location = useLocation();
@@ -31,32 +33,34 @@ const All = ({setMonth, setCategory, selectedMonth}) => {
     async  function  fetchData(){
         const request = await getGenres();
         setGenres(request.data.results)
-        const request2 = await getPlatforms()
-        setPlatforms(request2.data.results)
+        const request2 = await getPlatforms();
+        setPlatforms(request2.data.results);
     }
 
     useEffect(() => {
-        setYear(new Date().getFullYear().toString());
         fetchData()
-        dispatch(loadGames())
-  }, [dispatch]);
+    }, []);
 
-  
+    useEffect(() => {
+        dispatch(loadGames(`${year}-${selectedValue}-01`, `${year}-${selectedValue}-28`))
+    }, [dispatch, selectedValue, year]);
+
   useEffect(() => {
-    if (selectedMonth === "January"){setMonthValue(`${year}-01`)}
-    else if (selectedMonth === "Feburary"){setMonthValue(`${year}-02`)}
-    else if  (selectedMonth === "March"){setMonthValue(`${year}-03`)}
-    else if  (selectedMonth === "April"){setMonthValue(`${year}-04`)}
-    else if  (selectedMonth === "May"){setMonthValue(`${year}-05`)}
-    else if  (selectedMonth === "June"){setMonthValue(`${year}-06`)}
-    else if  (selectedMonth === "July"){setMonthValue(`${year}-07`)}
-    else if  (selectedMonth === "August"){setMonthValue(`${year}-08`)}
-    else if  (selectedMonth === "September"){setMonthValue(`${year}-09`)}
-    else if  (selectedMonth === "October"){setMonthValue(`${year}-10`)}
-    else if  (selectedMonth === "November"){setMonthValue(`${year}-11`)}
-    else if  (selectedMonth === "December"){setMonthValue(`${year}-12`)}
-    else setMonthValue('');
+    if (selectedMonth === "January"){setMonthValue('01')}
+    else if (selectedMonth === "Feburary"){setMonthValue('02')}
+    else if  (selectedMonth === "March"){setMonthValue('03')}
+    else if  (selectedMonth === "April"){setMonthValue('04')}
+    else if  (selectedMonth === "May"){setMonthValue('05')}
+    else if  (selectedMonth === "June"){setMonthValue('06')}
+    else if  (selectedMonth === "July"){setMonthValue('07')}
+    else if  (selectedMonth === "August"){setMonthValue('08')}
+    else if  (selectedMonth === "September"){setMonthValue('09')}
+    else if  (selectedMonth === "October"){setMonthValue('10')}
+    else if  (selectedMonth === "November"){setMonthValue('11')}
+    else if  (selectedMonth === "December"){setMonthValue('12')}
+    else setMonthValue(getCurrentMonth());
 }, [selectedMonth])
+
     return (
         <div>
         <Navbar setMonth = {setMonth} setCategory={setCategory}/>
@@ -90,7 +94,7 @@ const All = ({setMonth, setCategory, selectedMonth}) => {
             </div>
             </div>
             <Games>
-                {upcoming.filter(game => game.released.includes(selectedValue)).map(game =>(
+                {upcoming.map(game =>(
                     <Game name={game.name} 
                     released={game.released} 
                     id={game.id}
@@ -98,18 +102,6 @@ const All = ({setMonth, setCategory, selectedMonth}) => {
                     key={game.id}/>
                 ))}
             </Games>
-        </GameList>
-        <GameList>
-        <h2>Popular Games</h2>
-        <Games>
-            {popular.filter(game => game.released.includes(selectedValue)).map(game =>(
-                <Game name={game.name} 
-                released={game.released} 
-                id={game.id}
-                image={game.background_image}
-                key={game.id}/>
-            ))}
-        </Games>
         </GameList>
         </div>
     )

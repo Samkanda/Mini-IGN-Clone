@@ -7,8 +7,6 @@ import {useDispatch} from 'react-redux';
 import {loadDetail} from '../actions/detailsAction';
 import { Link } from 'react-router-dom';
 import {smallImage} from '../util';
-// import { LazyLoadImage } from 'react-lazy-load-image-component';
-// import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 const Game = ({name, released, image, id}) => {
