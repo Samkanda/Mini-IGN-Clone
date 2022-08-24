@@ -3,19 +3,22 @@ import {popularGamesURL, upcomingGamesURL, newGamesURL, genreGamesURL} from '../
 
 //Action Creator
 
-export const loadGames = (a, b) => async(dispatch) => {
+export const loadGames = (a, b, platform, genre) => async(dispatch) => {
+    let platformArray = [{'PC': 4, 'Playstation 5' : 187, "Xbox One" : 1, "Nintendo Switch": 7 , "Xbox Series S/X": 1, 'Playstation ' : 18}]
+    if (platform !== undefined) {
+        console.log(platform)
+        platform = platformArray[0][platform];
+        console.log(platform)
+        
+    }
+
     //FETCH AXIOS
-    const popularData = await axios.get(popularGamesURL())
-    const newGamesData = await axios.get(newGamesURL())
-    const upcomingData = await axios.get(upcomingGamesURL(a, b))
-    console.log(a)
-    console.log(b)
+    const upcomingData = await axios.get(upcomingGamesURL(a, b, platform, genre))
+    console.log(genre !== "all genres" ? "activate" : "stop")
     dispatch({
         type: "FETCH_GAMES",
         payload:{
-            popular: popularData.data.results,
             upcoming: upcomingData.data.results,
-            newGames: newGamesData.data.results,
         }
     })
 }

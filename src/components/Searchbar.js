@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import {motion} from "framer-motion";
-import logo from '../img/logo.png';
+import logo from '../img/IGN-logo.png';
 const Searchbar = () => {
     const [showLinks, setShowLinks] = useState(false);
     return (
@@ -36,7 +36,7 @@ const NavOuter = styled(motion.div)`
     display:flex;
     padding: 0 11.5vw;
     height: 5rem;
-    background-color: white;
+    background-color: #283044;
     box-shadow: rgb(0 0 0 / 8%) 0px 2px 4px 0px;
     border-bottom: 2px solid rgba(0, 0, 0, 0.08);
     @media only screen and (max-width: 1150px){height: 6rem; padding: 0 3.5vw;}
@@ -44,6 +44,7 @@ const NavOuter = styled(motion.div)`
 
 export const BurgerButton = styled.button`
   background-color: Transparent;
+  color: white;
   display: none;
   border: none;
   .burgerButton{ width: 70px; height: 40px; } `;
@@ -64,18 +65,18 @@ const NavInner = styled(motion.div)`
 const Links = styled.div`
     display: flex;
     text-decoration:none;
-    color: #7510F7;
     font-size: 25px;
     align-items: center;
     h3{
         font-size: 18px;
         padding: 8px;
+        color: white ;
         margin: 0;
     }
     @media only screen and (max-width: 950px) {
         div {display: none;}
     }
-    .searchIcon{ width: 2rem;}
+    .searchIcon{ width: 2rem; color: white}
 
 `;
 
@@ -110,7 +111,7 @@ const NavContent = styled.div`
         left: 0px;
         top: 90px;
         width: 100%;
-        background-color: white;
+        background: #283044;
         box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
         display: flex;
         flex-direction: column;

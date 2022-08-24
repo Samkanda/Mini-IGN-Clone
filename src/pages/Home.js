@@ -1,16 +1,19 @@
 import React, {useState} from "react";
-//Components
-import Featured from "../pages/Featured";
 import All from "../pages/All";
-import Popular from '../pages/Popular'
 
 const Home = () => {
-   
-  const [selectedMonth, setMonth] = useState("All");
+  const d = new Date();
+  const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+  console.log(monthNames[d.getMonth()])
+
+  const [selectedMonth, setMonth] = useState(monthNames[d.getMonth()]);
   const [selectedCategory, setCategory] = useState("All");
+
   
-if(selectedCategory === "Featured") {return (<Featured selectedMonth= {selectedMonth} setMonth = {setMonth} setCategory={setCategory} selectedCategory={selectedCategory}/>)}
-else if(selectedCategory === "Popular"){return (<Popular selectedMonth= {selectedMonth} setMonth = {setMonth} setCategory={setCategory} selectedCategory={selectedCategory}/>)}
-else{ return( <All selectedMonth= {selectedMonth} setMonth = {setMonth} setCategory={setCategory} selectedCategory={selectedCategory}/>)}}
+
+ return( 
+  <All selectedMonth= {selectedMonth} setMonth = {setMonth} setCategory={setCategory} selectedCategory={selectedCategory}/>
+  )
+}
     
 export default Home;

@@ -5,7 +5,6 @@ import {loadGames} from '../actions/gamesAction';
 import { useLocation } from "react-router";
 import { getGenres, getPlatforms } from "../actions/axios";
 
-
 //Styling and Animation
 import styled from 'styled-components/macro';
 import {motion} from "framer-motion";
@@ -22,6 +21,9 @@ const All = ({setMonth, setCategory, selectedMonth}) => {
     const [platforms, setPlatforms] = useState([])
     const {upcoming, popular} = useSelector((state) => state.games); 
     const [selectedValue, setMonthValue] = useState(getCurrentMonth());
+    const [selectedPlatform, setSelectedPlatform] = useState();
+    const [selectedGenre, setSelectedGenre] = useState('all genres');
+    
     
 
     //get the current location
@@ -42,8 +44,11 @@ const All = ({setMonth, setCategory, selectedMonth}) => {
     }, []);
 
     useEffect(() => {
-        dispatch(loadGames(`${year}-${selectedValue}-01`, `${year}-${selectedValue}-28`))
-    }, [dispatch, selectedValue, year]);
+        if(selectedGenre == "All Genres"){setSelectedGenre('All Genres')}
+        if(selectedPlatform == "All Genres"){setSelectedPlatform(null)}
+        dispatch(loadGames(`${year}-${selectedValue}-01`, `${year}-${selectedValue}-28`, selectedPlatform, selectedGenre))
+        console.log(selectedPlatform)
+    }, [dispatch, selectedValue, year,selectedGenre , selectedPlatform]);
 
   useEffect(() => {
     if (selectedMonth === "January"){setMonthValue('01')}
@@ -63,13 +68,13 @@ const All = ({setMonth, setCategory, selectedMonth}) => {
 
     return (
         <div>
-        <Navbar setMonth = {setMonth} setCategory={setCategory}/>
+        <Navbar setMonth = {setMonth} setCategory={setCategory} selectedMonth={selectedMonth}/>
         <GameList>
             {path && <GameDetail/> }
             <div className="PageContainer">
             <h2>{selectedMonth} {year}</h2>
             <div className="selectContainer">
-                <select>
+                <select  onChange={(e) => setSelectedPlatform(e.target.value)}>
                     <option>
                         All Platforms
                     </option>
@@ -81,7 +86,7 @@ const All = ({setMonth, setCategory, selectedMonth}) => {
                         )
                     }): null}
                 </select>
-                <select>
+                <select  onChange={(e) => setSelectedGenre(e.target.value.toLowerCase())}>
                     <option>All Genres</option>
                     { genres.length > 0 ? genres.map((genre) => {
                         return(
@@ -99,6 +104,7 @@ const All = ({setMonth, setCategory, selectedMonth}) => {
                     released={game.released} 
                     id={game.id}
                     image={game.background_image}
+                    platforms={game.platforms}
                     key={game.id}/>
                 ))}
             </Games>
@@ -110,26 +116,31 @@ const All = ({setMonth, setCategory, selectedMonth}) => {
 export default All;
 
 const GameList = styled(motion.div)`
-    padding: 0rem 12vw;
+    background-color: #202634;
+    padding: 0rem 12rem 12rem 12rem;
+    @media(max-width: 1150px){padding-left: 2rem; padding-right: 2rem}
     @media only screen and (max-width: 650px){
         padding: 0rem 1rem;
     }
     h2{
         font-family: 'Maven Pro';
         font-size: 1.5rem;
+        color: white;
     }
     .PageContainer{
         display: flex;
         flex-direction: row;
         align-items: center;
         margin-bottom: 40px;
-        border-bottom: 2px solid rgba(0,0,0,0.08);
+        border-bottom: 2px solid rgba(138, 147, 153, 0.5);
         padding: 2rem 0rem 1rem;
         justify-content: space-between;
-        @media(max-width: 500px){flex-direction:column}
+        @media(max-width: 545px){flex-direction:column}
     }
     .selectContainer{
         select{
+            background: #181C25;
+            color: white;
             margin-right: 10px;
             width: 162px;
             padding: 10px;
@@ -139,6 +150,7 @@ const GameList = styled(motion.div)`
             appearance:none;
             border-color: #bbc4c4;
         }
+        @media(max-width: 545px){display: flex}
     }
 `
 const Games = styled(motion.div)`
