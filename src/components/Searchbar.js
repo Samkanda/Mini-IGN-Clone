@@ -23,7 +23,7 @@ const Searchbar = () => {
                 <h3>Guides</h3>
                 <h3>Playlist</h3>
                 <h3>Boards</h3>
-                <SearchIcon className = "searchIcon"/>
+                {/* <SearchIcon className = "searchIcon"/> */}
                 <button className = "signButton">Sign in</button>
                 </Links>
             </NavContent>
@@ -34,7 +34,8 @@ const Searchbar = () => {
 export default Searchbar;
 const NavOuter = styled(motion.div)`
     display:flex;
-    padding: 0 11.5vw;
+    padding-left: max(19px, 15%);
+    padding-right: max(19px, 15%);
     height: 5rem;
     background-color: #283044;
     box-shadow: rgb(0 0 0 / 8%) 0px 2px 4px 0px;

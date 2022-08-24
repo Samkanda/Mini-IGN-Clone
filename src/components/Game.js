@@ -5,10 +5,10 @@ import {motion} from "framer-motion";
 //Reducx
 import {useDispatch} from 'react-redux';
 import {loadDetail} from '../actions/detailsAction';
-import PlayStation from '../img/playstation.svg';
-import Nintendo from '../img/nintendo.svg';
+import PlayStation from '../img/playstation.png';
+import Nintendo from '../img/nintendo.png';
 import PC from '../img/windows.png';
-import Xbox from '../img/xbox.svg';
+import Xbox from '../img/xbox.png';
 import { Link } from 'react-router-dom';
 import {smallImage} from '../util';
 

@@ -117,7 +117,8 @@ export default All;
 
 const GameList = styled(motion.div)`
     background-color: #202634;
-    padding: 0rem 12rem 12rem 12rem;
+    padding-left: max(19px, 15%);
+    padding-right: max(19px, 15%);
     @media(max-width: 1150px){padding-left: 2rem; padding-right: 2rem}
     @media only screen and (max-width: 650px){
         padding: 0rem 1rem;
@@ -156,7 +157,7 @@ const GameList = styled(motion.div)`
 const Games = styled(motion.div)`
     min-height: 50vh;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(305px, 1fr)); 
     grid-column-gap: 1rem;
     grid-row-gap: 5rem;
     @media only screen and (max-width: 650px){

@@ -58,8 +58,8 @@ const NavOuter = styled(motion.div)`
 `;
 
 const NavInner = styled(motion.div)`
-    padding-left: 12rem;
-    padding-right: 12rem;
+    padding-left: max(19px, 15%);
+    padding-right: max(19px, 15%);
     padding-top: 2rem;
     @media(max-width: 1150px){padding-left: 2rem; padding-right: 2rem}
     @media(max-width: 545px){padding-left: 1rem; padding-right: 1rem}
