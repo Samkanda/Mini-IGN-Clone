@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/Mini-IGN-Clone/static/js/main.821fad83.chunk.js",
+    "main.js.map": "/Mini-IGN-Clone/static/js/main.821fad83.chunk.js.map",
+    "runtime-main.js": "/Mini-IGN-Clone/static/js/runtime-main.5b3473e8.js",
+    "runtime-main.js.map": "/Mini-IGN-Clone/static/js/runtime-main.5b3473e8.js.map",
+    "static/js/2.c9d567d6.chunk.js": "/Mini-IGN-Clone/static/js/2.c9d567d6.chunk.js",
+    "static/js/2.c9d567d6.chunk.js.map": "/Mini-IGN-Clone/static/js/2.c9d567d6.chunk.js.map",
+    "index.html": "/Mini-IGN-Clone/index.html",
+    "static/js/2.c9d567d6.chunk.js.LICENSE.txt": "/Mini-IGN-Clone/static/js/2.c9d567d6.chunk.js.LICENSE.txt",
+    "static/media/IGN-logo.ab6cbc45.png": "/Mini-IGN-Clone/static/media/IGN-logo.ab6cbc45.png",
+    "static/media/nintendo.7a4ddf69.png": "/Mini-IGN-Clone/static/media/nintendo.7a4ddf69.png",
+    "static/media/windows.82f69178.png": "/Mini-IGN-Clone/static/media/windows.82f69178.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5b3473e8.js",
+    "static/js/2.c9d567d6.chunk.js",
+    "static/js/main.821fad83.chunk.js"
+  ]
+}
