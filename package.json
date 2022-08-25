@@ -1,4 +1,5 @@
 {
+  "homepage": "https://samkanda.github.io/Mini-IGN-Clone/",
   "name": "game-watch",
   "version": "0.1.0",
   "private": true,
@@ -25,6 +26,8 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -49,6 +52,7 @@
     ]
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^2.0.7"
+    "babel-plugin-styled-components": "^2.0.7",
+    "gh-pages": "^4.0.0"
   }
 }
