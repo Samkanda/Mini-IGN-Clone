@@ -119,6 +119,7 @@ const GameList = styled(motion.div)`
     background-color: #202634;
     padding-left: max(19px, 15%);
     padding-right: max(19px, 15%);
+    padding-bottom: 12rem;
     @media(max-width: 1150px){padding-left: 2rem; padding-right: 2rem}
     @media only screen and (max-width: 650px){
         padding: 0rem 1rem;
